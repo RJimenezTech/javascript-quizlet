@@ -6,7 +6,7 @@
 header {
     background-color: blue;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     height: 15vh;
 }
@@ -21,20 +21,15 @@ header {
 }
 
 .timer {
-    margin: 10px;
+    /* margin: 10px; */
     border: 1px solid white;
-    color: white;
-    padding: 10px;
-    max-width: 150px;
-    min-width: 100px;
-    text-align: center;
-}
-.ready {
-    background-color: aqua;
-    color: grey;
     font-size: 50px;
+    color: white;
+    /* padding: 10px; */
+    width: 300px;
+    min-width: 100px;
+    height: 100%;
     text-align: center;
-    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,42 +44,59 @@ header {
     max-width: 150px;
     min-width: 100px;
 }
-
 .start:hover {
     background-color: black;
     color: white;
 }
 
-.question-container {
+.question-area {
     background-color: aqua;
+    color: grey;
+    font-size: 50px;
+    text-align: center;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
-.question-text {
-    background-color: black;
+.question-card {
+    margin: 50px;
+    border: 1px solid red;
+    padding: 10px;
+    background-color: grey;
     color: white;
 }
-
+.question-text {
+    background-color: black;
+    font-size: 25px;
+    color: white;
+    width: 75%;
+    height: 25%;
+}
 .question-A {
     background-color: blue;
 }
-
 .question-B {
     background-color: orange;
 }
-
 .question-C {
     background-color: red;
 }
-
 .question-D {
     background-color: green;
 }
-
 .question-A, 
 .question-B, 
 .question-C, 
 .question-D {
     color: white;
+    max-width: 40%;
+    height: 25%;
+}
+.question-result {
+    color: grey;
+    opacity: .5;
 }
 
 footer {
