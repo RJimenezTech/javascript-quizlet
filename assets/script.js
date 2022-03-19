@@ -7,427 +7,39 @@ let quizTime = "";
 // create area where questions will display
 let questionAreaEl = document.querySelector("#question-area");
 let mainArea = document.querySelector("#page-content");
+// let questionAnswerEl = document.querySelector("#question-answer-container")
+let submitButton = document.querySelectorAll("#answer");
 
 // question object array(format is {questionID, questionText, answer1, answer2, answer3, answer4, correntAnswer})
 let questionObjectArr = [
-    {questionID: 1,
+    {questionID: "0",
     questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 2,
+    answerA: "Java",
+    answerB: "TypeScript",
+    answerC: "JabbaScript", 
+    answerD: "JavaScript", 
+    correctAnswer: "answerD"},
+    {questionID: "1",
     questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 3,
+    answerA: "JavaScript",
+    answerB: "TypeScript",
+    answerC: "JabbaScript", 
+    answerD: "Java", 
+    correctAnswer: "answerA"},
+    {questionID: "2",
     questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 4,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 5,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 6,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 7,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 8,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 9,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 10,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 11,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 12,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 13,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 14,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 15,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 16,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 17,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 18,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 19,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 20,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 21,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 22,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 23,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 24,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 24,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 26,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 27,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 28,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 29,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 30,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 31,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 32,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 33,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 34,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 35,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 36,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 37,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 36,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 39,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 40,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 41,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 42,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 43,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 44,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 45,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 46,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 47,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 48,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 49,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 50,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 51,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 52,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 53,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 54,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 55,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 56,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"},
-    {questionID: 57,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "JavaScript", 
-    correctAnswer: "answer4"},
-    {questionID: 58,
-    questionText: "How do you spell JavaScript?",
-    answer1: "JavaScript",
-    answer2: "TypeScript",
-    answer3: "JabbaScript", 
-    answer4: "Java", 
-    correctAnswer: "answer1"},
-    {questionID: 59,
-    questionText: "How do you spell JavaScript?",
-    answer1: "Java",
-    answer2: "TypeScript",
-    answer3: "JavaScript", 
-    answer4: "JabbaScript", 
-    correctAnswer: "answer3"}
+    answerA: "Java",
+    answerB: "TypeScript",
+    answerC: "JavaScript", 
+    answerD: "JabbaScript", 
+    correctAnswer: "answerC"}
 ];
 
 // function to decrease time
-let decrementTimer = function() {
-    quizTime--;
+let decrementTimer = function(num) {
+    for(let i = 0; i < num; i++){
+      quizTime--;  
+    }    
 };
 
 // function to set a timer output to current value of quiztime to the timer element every second
@@ -443,23 +55,24 @@ let startButtonHandler = function() {
         } else {
             // otherwise update content in timerEl with the current quizTime
             timerEl.textContent = "Time : " + quizTime + " s";
+
+
             // call function to decrement quizTime
-            decrementTimer();
+            decrementTimer(1);
         }
     }, 1 * 1000 )
 };
 
 let gameHandler = function() {
-    var newQuestionCard = generateQuestionCard(questionObjectArr[1]);
+    var newQuestionCard = generateQuestionCard(questionObjectArr[0]);
     var readyInfoEl1 = document.querySelector("#ready-info1");
     var readyInfoEl2 = document.querySelector("#ready-info2");
-    console.log(readyInfoEl1);
-    console.log(readyInfoEl2);
+
     questionAreaEl.appendChild(newQuestionCard);
     // once timer has started, remove "ready?" text
     if (quizTime <= 59) {
-            readyInfoEl1.style.opacity = "0";
-            readyInfoEl2.style.opacity = "0";
+            readyInfoEl1.textContent = "";
+            readyInfoEl2.textContent = "";
     }
 }
 
@@ -467,34 +80,77 @@ let generateQuestionCard = function(questionObject) {
     // create elements in a question card
     var questionCardEl = document.createElement("div");
     var questionTextEl = document.createElement("h1");
+    var answerContainerEl = document.createElement("div");
     var answerA = document.createElement("button");
+    answerA.addEventListener("click", checkAnswer);
     var answerB = document.createElement("button");
+    answerB.addEventListener("click", checkAnswer);
     var answerC = document.createElement("button");
+    answerC.addEventListener("click", checkAnswer);
     var answerD = document.createElement("button");
+    answerD.addEventListener("click", checkAnswer);
 
-    // assign classes to each element
-    questionCardEl.className = "question-card"
+    // assign classes and question IDs to each element
+    questionCardEl.className = "question-card";
+    questionCardEl.setAttribute("data-id", questionObject.questionID)
     questionTextEl.className = "question-text";
+    questionTextEl.setAttribute("data-id", questionObject.questionID)
+    answerContainerEl.className = "question-answer-container";
+    answerContainerEl.setAttribute("data-id", questionObject.questionID)
     answerA.className = "question-A";
+    answerA.setAttribute("id", "answer");
+    answerA.setAttribute("data-id", questionObject.questionID);
+    answerA.setAttribute("data-whichAnswer", "answerA")
     answerB.className = "question-B";
-    answerC.className = "question-C";
-    answerD.className = "question-D";
+    answerB.setAttribute("id", "answer");
+    answerB.setAttribute("data-id", questionObject.questionID);
+    answerB.setAttribute("data-whichAnswer", "answerB")
+    answerC.className = "question-C"
+    answerC.setAttribute("id", "answer");
+    answerC.setAttribute("data-id", questionObject.questionID);
+    answerC.setAttribute("data-whichAnswer", "answerC")
+    answerD.className = "question-D"
+    answerD.setAttribute("id", "answer");
+    answerD.setAttribute("data-id", questionObject.questionID);
+    answerD.setAttribute("data-whichAnswer", "answerD")
+    
 
     // assign information to each element
-    questionTextEl.textContent = questionObject.questionText;
-    answerA.textContent = questionObject.answer1;
-    answerB.textContent = questionObject.answer2;
-    answerC.textContent = questionObject.answer3;
-    answerD.textContent = questionObject.answer4;
+    questionTextEl.textContent = questionObject.questionText + " " + questionObject.questionID;
+    answerA.textContent = questionObject.answerA;
+    answerB.textContent = questionObject.answerB;
+    answerC.textContent = questionObject.answerC;
+    answerD.textContent = questionObject.answerD;
 
     // add elements to card
     questionCardEl.appendChild(questionTextEl);
-    questionCardEl.appendChild(answerA);
-    questionCardEl.appendChild(answerB);
-    questionCardEl.appendChild(answerC);
-    questionCardEl.appendChild(answerD);
+    answerContainerEl.appendChild(answerA);
+    answerContainerEl.appendChild(answerB);
+    answerContainerEl.appendChild(answerC);
+    answerContainerEl.appendChild(answerD);
+    questionCardEl.appendChild(answerContainerEl);
 
     return questionCardEl;
+}
+
+let checkAnswer = function (event) {
+    let answerClicked = event.target;
+    workingID = answerClicked.getAttribute("data-id");
+    let currentQuestionObj = {};
+    for (let i = 0; i < questionObjectArr.length; i++) {
+        if (questionObjectArr[i].questionID === workingID) {
+            currentQuestionObj = questionObjectArr[i];
+        }
+    }
+    if (currentQuestionObj.correctAnswer === answerClicked.getAttribute("data-whichAnswer")) {
+        window.alert("you got the answer correct!");
+    }
+    else {
+        window.alert("you got the answer wrong!");
+        decrementTimer(5);
+    }
+         
+    // this.parentNode.parentNode.remove();
 }
 
 // WHEN I click the start button
@@ -504,8 +160,9 @@ let generateQuestionCard = function(questionObject) {
         // function that reduces the timer when wrong 
     // functions for presenting questions
         // array of question objects DONE
-        // function that generates a new question card
-        // listen for click on answer buttons
+        // function that generates a new question card DONE
+        // listen for click on answer buttons DONE
+        // check if answer was correct
         // update DOM element that contains a question     
 
 // WHEN I answer a question
@@ -525,6 +182,8 @@ let generateQuestionCard = function(questionObject) {
     // functions that control flow of game
     // functions that store score
     // functions that allow for input of initials
+
+
 // wait for click on start button to start timer
 startQuizEl.addEventListener("click", startButtonHandler);
 // wait for click on start button to start game
