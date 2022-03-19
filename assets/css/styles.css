@@ -1,18 +1,20 @@
 * {
     font-family: 'Times New Roman', Times, serif;
+    margin: 0;
 }
-
 
 header {
     background-color: blue;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 15vh;
 }
 
 .view-scores {
     margin: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
+    color: white;
     padding: 10px;
     max-width: 150px;
     min-width: 100px;
@@ -20,7 +22,8 @@ header {
 
 .timer {
     margin: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
+    color: white;
     padding: 10px;
     max-width: 150px;
     min-width: 100px;
@@ -28,7 +31,13 @@ header {
 }
 .ready {
     background-color: aqua;
+    color: grey;
+    font-size: 50px;
     text-align: center;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .start {
@@ -80,5 +89,5 @@ header {
 
 footer {
     background-color: blue;
-
+    height: 15vh;
 }

@@ -1,3 +1,22 @@
+let startQuizEl = document.querySelector("#start");
+let timerEl = document.querySelector("#timer");
+let quizTime = 59;
+
+let decrementTimer = function() {
+    quizTime--;
+};
+
+let startButtonHandler = function() {  
+    var timerOutput = setInterval(function() {
+        if (quizTime < 0) {
+            clearInterval(timerOutput);
+        } else {
+            timerEl.textContent = "Time : " + quizTime;
+            decrementTimer();
+        }
+    }, 1000)
+};
+
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
     // functions that control timer
@@ -20,3 +39,5 @@
     // functions that control flow of game
     // functions that store score
     // functions that allow for input of initials
+
+startQuizEl.addEventListener("click", startButtonHandler);
