@@ -9,7 +9,11 @@ let questionAreaEl = document.querySelector("#question-area");
 let mainArea = document.querySelector("#page-content");
 // let questionAnswerEl = document.querySelector("#question-answer-container")
 let submitButton = document.querySelectorAll("#answer");
-
+// current question number
+let questionNumber = 0;
+// high score handling variables
+let score = 0;
+let highScoreArr = [];
 // question object array(format is {questionID, questionText, answer1, answer2, answer3, answer4, correntAnswer})
 let questionObjectArr = [
     {questionID: "0",
@@ -34,14 +38,10 @@ let questionObjectArr = [
     answerD: "JabbaScript", 
     correctAnswer: "answerC"}
 ];
-
 // function to decrease time
 let decrementTimer = function(num) {
-    for(let i = 0; i < num; i++){
-      quizTime--;  
-    }    
+    quizTime = quizTime - num;
 };
-
 // function to set a timer output to current value of quiztime to the timer element every second
 let startButtonHandler = function() {  
     // set quizTime to 59 to eliminate time delay
@@ -62,20 +62,19 @@ let startButtonHandler = function() {
         }
     }, 1 * 1000 )
 };
-
 let gameHandler = function() {
-    var newQuestionCard = generateQuestionCard(questionObjectArr[0]);
-    var readyInfoEl1 = document.querySelector("#ready-info1");
-    var readyInfoEl2 = document.querySelector("#ready-info2");
-
-    questionAreaEl.appendChild(newQuestionCard);
     // once timer has started, remove "ready?" text
+    var readyInfoEl1 = document.querySelector("#ready-info1");
+    var readyInfoEl2 = document.querySelector("#ready-info2");  
     if (quizTime <= 59) {
             readyInfoEl1.textContent = "";
             readyInfoEl2.textContent = "";
     }
-}
+    
+    var newQuestionCard = generateQuestionCard(questionObjectArr[questionNumber]);
+    questionAreaEl.appendChild(newQuestionCard);  
 
+}
 let generateQuestionCard = function(questionObject) {
     // create elements in a question card
     var questionCardEl = document.createElement("div");
@@ -132,27 +131,52 @@ let generateQuestionCard = function(questionObject) {
 
     return questionCardEl;
 }
-
+// check if the answer was correct
 let checkAnswer = function (event) {
     let answerClicked = event.target;
     workingID = answerClicked.getAttribute("data-id");
     let currentQuestionObj = {};
+    // find the question object in in the array for comparison
     for (let i = 0; i < questionObjectArr.length; i++) {
         if (questionObjectArr[i].questionID === workingID) {
             currentQuestionObj = questionObjectArr[i];
         }
     }
+    // if the current question's answer was clicked,
+    // the user got this question correct
     if (currentQuestionObj.correctAnswer === answerClicked.getAttribute("data-whichAnswer")) {
-        window.alert("you got the answer correct!");
+        // if correct remove current question card
+        score++;
+        console.log("score is " + score);
+        var removeEl = document.querySelector(".question-card[data-id='" + workingID +"']");
+        console.log(removeEl)
+        removeEl.remove();
+        // move to next question
+        questionNumber++;
+        // as long as there are questions left in the array
+        if (questionNumber < questionObjectArr.length) {
+            // create a new question card with the next question object
+            newQuestionCard = generateQuestionCard(questionObjectArr[questionNumber]);
+            questionAreaEl.appendChild(newQuestionCard);
+        } else { // timer goes to zero (dummy action)
+            quizTime = 0;
+        }
     }
     else {
-        window.alert("you got the answer wrong!");
-        decrementTimer(5);
+        // console.log("you chose the wrong answer")
+        decrementTimer(4);
     }
-         
     // this.parentNode.parentNode.remove();
 }
 
+let saveScore = function() {
+    highScoreArr.push(score);
+    localStorage.setItem("highScore", JSON.stringify(highScoreArr));
+}
+
+let endGame = function() {
+    saveScore();
+}
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
     // functions that control timer
