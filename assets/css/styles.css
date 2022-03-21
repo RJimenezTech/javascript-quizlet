@@ -126,6 +126,11 @@ header {
     opacity: .5;
 }
 
+.outcome {
+    position: absolute;
+    
+    bottom: 0px;
+}
 footer {
     background-color: blue;
     height: 15vh;
