@@ -1,7 +1,7 @@
 * {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 header {
@@ -11,14 +11,6 @@ header {
     align-items: center;
     height: 15vh;
 }
-
-/* header.button {
-    width: 33%;
-}
-
-header.div {
-    width: 33%;
-} */
 
 .view-scores {
     margin: 10px;
@@ -100,10 +92,10 @@ header.div {
     position: absolute;
     bottom: 20%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
     width: 85%;
     height: 50%;
 
