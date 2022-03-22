@@ -76,6 +76,7 @@ header {
     align-items: center;
 }
 .question-text {
+    border-radius: 5px;
     background-color: black;
     font-size: 25px;
     color: white;
@@ -87,6 +88,23 @@ header {
     justify-content: center;
     align-items: center;
 }
+
+.score-text {
+    border-radius: 5px;
+    background-color: black;
+    font-size: 25px;
+    color: white;
+    padding: 25px;
+    position: absolute;
+    top: 10px;
+    width: 85%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 /*reorganize this section*/
 .question-answer-container {
     position: absolute;
