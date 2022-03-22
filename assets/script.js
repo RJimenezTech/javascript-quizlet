@@ -190,6 +190,8 @@ let questionObjectArr = [
     answerD: "JabbaScript", 
     correctAnswer: "answerC"}
 ];
+// initiate a current question
+var currentQuestionObj = {};
 let randomNumber = function() {
     return Math.floor(Math.random() * questionObjectArr.length + 1);
 }
@@ -199,6 +201,9 @@ let decrementTimer = function(num) {
 };
 // function to set a timer output to current value of quiztime to the timer element every second
 let timerHandler = function() {  
+    // remove "Press START QUIZ to begin" text
+    var removeTextEl = document.querySelector(".question-text");
+    removeTextEl.textContent = "";
     // set quizTime to 59 to eliminate time delay
     quizTime = 59;
     var timerOutput = setInterval(function() {
@@ -218,79 +223,86 @@ let timerHandler = function() {
     }, 1 * 1000 )
 };
 let gameHandler = function() {
-    // remove "Press START QUIZ to begin" text
-    var removeTextEl = document.querySelector(".question-text");
-    removeTextEl.textContent = "";
-    
     // first question at start of game
-    generateQuestionCard();
-    if (checkAnswer) {
-        generateQuestionCard();
-        outcomeEl.textContent = "correct!";
-    } else {
-        outcomeEl.textContent = "wrong!";
-    }
-    
-
+    // find a random question in the question array
+    currentQuestionObj = questionObjectArr[randomNumber()];
+    questionNumber++;
+    var questionTextEl = document.querySelector(".question-text")
+    var answerAEl = document.querySelector(".question-A");
+    var answerBEl = document.querySelector(".question-B");
+    var answerCEl = document.querySelector(".question-C");
+    var answerDEl = document.querySelector(".question-D");
+    // reset the text in all elements each time we generate a new card
+    answerAEl.textContent = "";
+    answerBEl.textContent = "";
+    answerCEl.textContent = "";
+    answerDEl.textContent = "";
+    // find a random question in the question array
+    currentQuestionObj = questionObjectArr[randomNumber()];
+    questionNumber++;
+    // update the text of each element to reflect the new random question
+    questionTextEl.textContent = currentQuestionObj.questionText + " " + currentQuestionObj.questionID;
+    answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerAEl.textContent = currentQuestionObj.answerA;
+    answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerBEl.textContent = currentQuestionObj.answerB;
+    answerCEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerCEl.textContent = currentQuestionObj.answerC;
+    answerDEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerDEl.textContent = currentQuestionObj.answerD;   
 }
 
 // function that dynamically updates the text for each question
-let generateQuestionCard = function() {
-    // find a random question in the question array
-    var currentQuestionObj = questionObjectArr[randomNumber()];
-    // create elements in a question card and update the text of each element 
-    // to reflect the currect random question
+let generateQuestionCard = function(event) {
+       
+    // initiate dom elements each time we generate a new card
     var questionTextEl = document.querySelector(".question-text")
-    questionTextEl.textContent = currentQuestionObj.questionText;
     var answerAEl = document.querySelector(".question-A");
-    answerAEl.textContent = currentQuestionObj.answerA;
     var answerBEl = document.querySelector(".question-B");
-    answerBEl.textContent = currentQuestionObj.answerB;
     var answerCEl = document.querySelector(".question-C");
-    answerCEl.textContent = currentQuestionObj.answerC;
     var answerDEl = document.querySelector(".question-D");
-    answerDEl.textContent = currentQuestionObj.answerD;
-
-    
- 
+    // if we clicked the correct answer
+    if (checkAnswer(event)) {
+        // reset the text in all elements each time we generate a new card
+        answerAEl.textContent = "";
+        answerBEl.textContent = "";
+        answerCEl.textContent = "";
+        answerDEl.textContent = "";
+        // find a random question in the question array
+        currentQuestionObj = questionObjectArr[randomNumber()];
+        questionNumber++;
+        // update the text of each element to reflect the new random question
+        questionTextEl.textContent = currentQuestionObj.questionText + " " + currentQuestionObj.questionID;
+        answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerAEl.textContent = currentQuestionObj.answerA;
+        answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerBEl.textContent = currentQuestionObj.answerB;
+        answerCEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerCEl.textContent = currentQuestionObj.answerC;
+        answerDEl.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerDEl.textContent = currentQuestionObj.answerD;    
+    } else {
+        decrementTimer(5);
+        return;
+    }   
 }
+
 // check if the answer was correct
 let checkAnswer = function (event) {
-//     let answerClicked = event.target;
-//     workingID = answerClicked.getAttribute("data-id");
-//     let currentQuestionObj = {};
-//     // find the question object in in the array for comparison
-//     for (let i = 0; i < questionObjectArr.length; i++) {
-//         if (questionObjectArr[i].questionID === workingID) {
-//             currentQuestionObj = questionObjectArr[i];
-//         }
-//     }
-//     // if the current question's answer was clicked,
-//     // the user got this question correct
-//     if (currentQuestionObj.correctAnswer === answerClicked.getAttribute("data-whichAnswer")) {
-//         // if correct remove current question card
-//         score++;
-//         console.log("score is " + score);
-//         // var removeEl = document.querySelector(".question-card[data-id='" + workingID +"']");
-//         // console.log(removeEl)
-//         // removeEl.remove();
-//         // move to next question
-//         questionNumber++;
-//         // as long as there are questions left in the array
-//         if (questionNumber < questionObjectArr.length) {
-//             // create a new question card with the next question object
-//             newQuestionCard = generateQuestionCard(questionObjectArr[questionNumber]);
-//             questionAreaEl.appendChild(newQuestionCard);
-//         } else { // timer goes to zero (dummy action)
-//             quizTime = 0;
-//         }
-//     }
-//     else {
-//         // console.log("you chose the wrong answer")
-//         decrementTimer(4);
-//     }
-//     // this.parentNode.parentNode.remove();
+    let answerClicked = event.target;
+    console.log(answerClicked.getAttribute("data-whichAnswer"));
+    console.log(currentQuestionObj.correctAnswer);
+    // let currentQuestionObj = {};
+    if (answerClicked.getAttribute("data-whichAnswer") === currentQuestionObj.correctAnswer) {
+        console.log("correct!")
+        return true;
+    }
+    else {
+        console.log("wrong!")
+        return false;
+    }
 }
+
 
 let saveScore = function() {
     highScoreArr.push(score);
@@ -336,7 +348,7 @@ startQuizEl.addEventListener("click", timerHandler);
 // wait for click on start button to start game
 startQuizEl.addEventListener("click", gameHandler);
 // wait for click on answer button
-answerButtonElA.addEventListener("click", checkAnswer);
-answerButtonElB.addEventListener("click", checkAnswer);
-answerButtonElC.addEventListener("click", checkAnswer);
-answerButtonElD.addEventListener("click", checkAnswer);
+answerButtonElA.addEventListener("click", generateQuestionCard);
+answerButtonElB.addEventListener("click", generateQuestionCard);
+answerButtonElC.addEventListener("click", generateQuestionCard);
+answerButtonElD.addEventListener("click", generateQuestionCard);
