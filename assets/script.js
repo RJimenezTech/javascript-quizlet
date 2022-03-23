@@ -8,17 +8,18 @@ let quizTime = "";
 let questionAreaEl = document.querySelector("#question-area");
 let mainArea = document.querySelector("#page-content");
 // find buttons for answer click events
+let questionTextEl = document.querySelector(".question-text");
 let answerButtonElA = document.querySelector(".question-A");
 let answerButtonElB = document.querySelector(".question-B");
 let answerButtonElC = document.querySelector(".question-C");
 let answerButtonElD = document.querySelector(".question-D");
 // find the question outcome section
 let outcomeEl = document.querySelector(".outcome");
-// current question number
-let questionNumber = 0;
+// // current question number
+// let questionNumber = 0;
 // high score handling variables
 let score = 0;
-let highScore = 0;
+let highScore = [];
 // question object array(format is {questionID, questionText, answer1, answer2, answer3, answer4, correntAnswer})
 let questionObjectArr = [
     {questionID: "0",
@@ -55,7 +56,7 @@ let questionObjectArr = [
     answerB: "call myFunction()",
     answerC: "var myFunction()", 
     answerD: "call function myFunction()", 
-    correctAnswer: "answerB"},
+    correctAnswer: "answerA"},
     {questionID: "5",
     questionText: "Which is the correct syntax for IF statements in JavaScript?",
     answerA: "if (i == 5)",
@@ -64,7 +65,7 @@ let questionObjectArr = [
     answerD: "if i =5", 
     correctAnswer: "answerA"},
     {questionID: "6",
-    questionText: "Which is the correct syntax for an IF statement if 'i' if NOT equal to 5?",
+    questionText: "Which is the correct syntax for an IF statement for 'i' is NOT equal to 5 in JavaScript?",
     answerA: "if (i != 5)",
     answerB: "if (i <> 5)",
     answerC: "if (i <> 5)", 
@@ -160,7 +161,7 @@ let questionObjectArr = [
     answerB: "an array of objects",
     answerC: "an array is compared to objects", 
     answerD: "a callback function", 
-    correctAnswer: "answerA"}
+    correctAnswer: "answerB"}
 ];
 // initiate a current question
 var currentQuestionObj = {};
@@ -199,61 +200,63 @@ let gameHandler = function() {
     // first question at start of game
     // find a random question in the question array
     currentQuestionObj = questionObjectArr[randomNumber()];
-    questionNumber++;
-    var questionTextEl = document.querySelector(".question-text")
-    var answerAEl = document.querySelector(".question-A");
-    var answerBEl = document.querySelector(".question-B");
-    var answerCEl = document.querySelector(".question-C");
-    var answerDEl = document.querySelector(".question-D");
+    // questionNumber++;
+    // var questionTextEl = document.querySelector(".question-text")
+    // var answerAEl = document.querySelector(".question-A");
+    // var answerBEl = document.querySelector(".question-B");
+    // var answerCEl = document.querySelector(".question-C");
+    // var answerDEl = document.querySelector(".question-D");
     // reset the text in all elements each time we generate a new card
-    answerAEl.textContent = "";
-    answerBEl.textContent = "";
-    answerCEl.textContent = "";
-    answerDEl.textContent = "";
+    // answerButtonElA.textContent = "";
+    // answerButtonElB.textContent = "";
+    // answerButtonElC.textContent = "";
+    // answerButtonElD.textContent = "";
     // find a random question in the question array
-    currentQuestionObj = questionObjectArr[randomNumber()];
-    questionNumber++;
+    // currentQuestionObj = questionObjectArr[randomNumber()];
+    // console.log("gameHandler question: " + currentQuestionObj.questionText);
+    // // questionNumber++;
     // update the text of each element to reflect the new random question
     questionTextEl.textContent = currentQuestionObj.questionText;
-    answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-    answerAEl.textContent = currentQuestionObj.answerA;
-    answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-    answerBEl.textContent = currentQuestionObj.answerB;
-    answerCEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-    answerCEl.textContent = currentQuestionObj.answerC;
-    answerDEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-    answerDEl.textContent = currentQuestionObj.answerD;       
+    answerButtonElA.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerButtonElA.textContent = currentQuestionObj.answerA;
+    answerButtonElB.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerButtonElB.textContent = currentQuestionObj.answerB;
+    answerButtonElC.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerButtonElC.textContent = currentQuestionObj.answerC;
+    answerButtonElD.setAttribute("data-question-id", currentQuestionObj.questionID);
+    answerButtonElD.textContent = currentQuestionObj.answerD;       
 }
 
 // function that dynamically updates the text for each question
 let generateQuestionCard = function(event) {
        
-    // initiate dom elements each time we generate a new card
-    var questionTextEl = document.querySelector(".question-text")
-    var answerAEl = document.querySelector(".question-A");
-    var answerBEl = document.querySelector(".question-B");
-    var answerCEl = document.querySelector(".question-C");
-    var answerDEl = document.querySelector(".question-D");
+    // // initiate dom elements each time we generate a new card
+    // var questionTextEl = document.querySelector(".question-text")
+    // var answerAEl = document.querySelector(".question-A");
+    // var answerBEl = document.querySelector(".question-B");
+    // var answerCEl = document.querySelector(".question-C");
+    // var answerDEl = document.querySelector(".question-D");
     // if we clicked the correct answer
     if (checkAnswer(event)) {
         // reset the text in all elements each time we generate a new card
-        answerAEl.textContent = "";
-        answerBEl.textContent = "";
-        answerCEl.textContent = "";
-        answerDEl.textContent = "";
+        answerButtonElA.textContent = "";
+        answerButtonElB.textContent = "";
+        answerButtonElC.textContent = "";
+        answerButtonElD.textContent = "";
         // find a random question in the question array
         currentQuestionObj = questionObjectArr[randomNumber()];
-        questionNumber++;
+        console.log("generateCard question: " + currentQuestionObj.questionText);
+        // questionNumber++;
         // update the text of each element to reflect the new random question
         questionTextEl.textContent = currentQuestionObj.questionText;
-        answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-        answerAEl.textContent = currentQuestionObj.answerA;
-        answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-        answerBEl.textContent = currentQuestionObj.answerB;
-        answerCEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-        answerCEl.textContent = currentQuestionObj.answerC;
-        answerDEl.setAttribute("data-question-id", currentQuestionObj.questionID);
-        answerDEl.textContent = currentQuestionObj.answerD;   
+        answerButtonElA.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerButtonElA.textContent = currentQuestionObj.answerA;
+        answerButtonElB.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerButtonElB.textContent = currentQuestionObj.answerB;
+        answerButtonElC.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerButtonElC.textContent = currentQuestionObj.answerC;
+        answerButtonElD.setAttribute("data-question-id", currentQuestionObj.questionID);
+        answerButtonElD.textContent = currentQuestionObj.answerD;   
         // update score as we get quesitons correct
         score++;
         console.log(score) ;
@@ -279,21 +282,20 @@ let checkAnswer = function (event) {
     }
 }
 
-
 let scoreHandler = function() {
-    var questionTextEl = document.querySelector(".question-text")
-    // var questionContainerEl = document.querySelector(".question-answer-container")
-    var answerAEl = document.querySelector(".question-A");
-    var answerBEl = document.querySelector(".question-B");
-    var answerCEl = document.querySelector(".question-C");
-    var answerDEl = document.querySelector(".question-D");
-    // add infor for user about end game process
+    // find question text and answers
+    // var questionTextEl = document.querySelector(".question-text")
+    answerButtonElA = document.querySelector(".question-A");
+    answerButtonElB = document.querySelector(".question-B");
+    answerButtonElC = document.querySelector(".question-C");
+    answerButtonElD = document.querySelector(".question-D");
+    // add info for user about end game process and remove answers
     questionTextEl.textContent = "All done!";
     questionTextEl.setAttribute("class","score-text");
-    answerAEl.remove();
-    answerBEl.remove();
-    answerCEl.remove(); 
-    answerDEl.remove(); 
+    answerButtonElA.remove();
+    answerButtonElB.remove();
+    answerButtonElC.remove(); 
+    answerButtonElD.remove(); 
     // var inputInitialsEl = document.createElement("textarea");
     // inputInitialsEl.className = "initials-input"
     // var promptInitialEl = document.createElement("p")
@@ -317,21 +319,22 @@ let scoreHandler = function() {
     } else {
         promptInitialEl.textContent = "Your score was not a High Score! Click OK to start over."
     }
+    // remove current question;
+    currentQuestionObj = {};
 }
 // function that removes the information from the current question
 let clearQuestionCard = function() {
     // function that removes all text from question card elements 
     // only to be used at end of game
-    var questionTextEl = document.querySelector(".question-text")
-    var answerAEl = document.querySelector(".question-A");
-    var answerBEl = document.querySelector(".question-B");
-    var answerCEl = document.querySelector(".question-C");
-    var answerDEl = document.querySelector(".question-D");
-    questionTextEl.textContent = "GAME OVER!";
-    answerAEl.textContent = ""; 
-    answerBEl.textContent = ""; 
-    answerCEl.textContent = ""; 
-    answerDEl.textContent = ""; 
+    questionTextEl = document.querySelector(".question-text")
+    answerButtonElA = document.querySelector(".question-A");
+    answerButtonElB = document.querySelector(".question-B");
+    answerButtonElC = document.querySelector(".question-C");
+    answerButtonElD = document.querySelector(".question-D");
+    answerButtonElA.textContent = ""; 
+    answerButtonElB.textContent = ""; 
+    answerButtonElC.textContent = ""; 
+    answerButtonElD.textContent = ""; 
 }
 
 let endGame = function() {
@@ -339,6 +342,8 @@ let endGame = function() {
     clearQuestionCard();
     // save info after game is over
     scoreHandler();
+
+
 }
 
 // WHEN I click the start button
