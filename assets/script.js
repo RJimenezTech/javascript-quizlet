@@ -22,117 +22,117 @@ let highScore = 0;
 // question object array(format is {questionID, questionText, answer1, answer2, answer3, answer4, correntAnswer})
 let questionObjectArr = [
     {questionID: "0",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
+    questionText: "Inside which HTML element do we put the JavaScript?",
+    answerA: "<script>",
+    answerB: "<javascript>",
+    answerC: "<scripting>", 
+    answerD: "<js>", 
+    correctAnswer: "answerA"},
     {questionID: "1",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
-    correctAnswer: "answerA"},
+    questionText: "What is the correct place to insert a <script> tag?",
+    answerA: "The <body> section",
+    answerB: "The <head> and <body> sections are correct",
+    answerC: "The <head> section", 
+    answerD: "The <meta> tag", 
+    correctAnswer: "answerB"},
     {questionID: "2",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"},
+    questionText: "What is the correct syntax for referring to an external script call 'xxx.js'?",
+    answerA: "<script src='xxx.js'>",
+    answerB: "<script href='xxx.js'>",
+    answerC: "<script name='xxx.js'>", 
+    answerD: "<script class='xxx.js'", 
+    correctAnswer: "answerA"},
     {questionID: "3",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
+    questionText: "How do you write 'Hello World' in an alert box?",
+    answerA: "msg('Hello World');",
+    answerB: "alert('Hello World');",
+    answerC: "console.log('Hello World');", 
+    answerD: "alertBox('Hello World');", 
+    correctAnswer: "answerB"},
     {questionID: "4",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
-    correctAnswer: "answerA"},
+    questionText: "How do you call a function named 'myFunction'?",
+    answerA: "myFunction()",
+    answerB: "call myFunction()",
+    answerC: "var myFunction()", 
+    answerD: "call function myFunction()", 
+    correctAnswer: "answerB"},
     {questionID: "5",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"},
+    questionText: "Which is the correct syntax for IF statements in JavaScript?",
+    answerA: "if (i == 5)",
+    answerB: "if i == 5 then",
+    answerC: "if i = 5 then", 
+    answerD: "if i =5", 
+    correctAnswer: "answerA"},
     {questionID: "6",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
+    questionText: "Which is the correct syntax for an IF statement if 'i' if NOT equal to 5?",
+    answerA: "if (i != 5)",
+    answerB: "if (i <> 5)",
+    answerC: "if (i <> 5)", 
+    answerD: "if i =! 5 then", 
+    correctAnswer: "answerA"},
     {questionID: "7",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
-    correctAnswer: "answerA"},
+    questionText: "Which is the correct WHILE loop syntax?",
+    answerA: "while i = 1 to 10",
+    answerB: "while (i <= 10)",
+    answerC: "while (i <= 10; i++)", 
+    answerD: "while (i fo 5 to 10)", 
+    correctAnswer: "answerB"},
     {questionID: "8",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"},
+    questionText: "Which is the correct FOR loop syntax?",
+    answerA: "for (i = 0; i <= 5; i++)",
+    answerB: "for (i <=5; i++)",
+    answerC: "for i = 1 to 5", 
+    answerD: "for (i = 0; i <=5)", 
+    correctAnswer: "answerA"},
     {questionID: "9",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
+    questionText: "Which is the correct syntax to create an ARRAY",
+    answerA: "var colors = (1:red, 2:green, 3:blue)",
+    answerB: "var colors = ['red','green','blue']",
+    answerC: "var colors = 'red','green','blue'", 
+    answerD: "var colors = 1 = ('red'),2 = ('green'), 3 = ('blue')", 
+    correctAnswer: "answerB"},
     {questionID: "10",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
-    correctAnswer: "answerA"},
+    questionText: "How do you round the number 8.25 to the nearest integer?",
+    answerA: "round(8.25)",
+    answerB: "Math.round(8.25)",
+    answerC: "Math.rnd(8.25)", 
+    answerD: "rnd(8.25)", 
+    correctAnswer: "answerB"},
     {questionID: "11",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"},
+    questionText: "JavaScript is the same as Java.",
+    answerA: "True",
+    answerB: "False",
+    answerC: "Sometimes", 
+    answerD: "None of the above", 
+    correctAnswer: "answerB"},
     {questionID: "12",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
-    {questionID: "13",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
-    correctAnswer: "answerA"},
-    {questionID: "14",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
+    questionText: "How do you declare a JavaScript variable?",
+    answerA: "variable carName",
+    answerB: "v carName;",
+    answerC: "var carName;", 
+    answerD: "this.carName;", 
     correctAnswer: "answerC"},
-    {questionID: "15",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
+    {questionID: "13",
+    questionText: "Which operator is used to assign a value to a variable?",
+    answerA: "x",
+    answerB: "-",
+    answerC: "=", 
+    answerD: "/", 
+    correctAnswer: "answerC"},
+    {questionID: "14",
+    questionText: "Which is the logical OR operator?",
+    answerA: "==",
+    answerB: "===",
+    answerC: "or", 
+    answerD: "||", 
     correctAnswer: "answerD"},
+    {questionID: "15",
+    questionText: "Which is the strict equality operatior?",
+    answerA: "=",
+    answerB: "==",
+    answerC: "===", 
+    answerD: "None of the above", 
+    correctAnswer: "answerC"},
     {questionID: "16",
     questionText: "How do you spell JavaScript?",
     answerA: "JavaScript",
@@ -141,33 +141,26 @@ let questionObjectArr = [
     answerD: "Java", 
     correctAnswer: "answerA"},
     {questionID: "17",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"},
-    {questionID: "18",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "JavaScript", 
-    correctAnswer: "answerD"},
-    {questionID: "19",
-    questionText: "How do you spell JavaScript?",
-    answerA: "JavaScript",
-    answerB: "TypeScript",
-    answerC: "JabbaScript", 
-    answerD: "Java", 
+    questionText: "Is JavaScript case-sensitive?",
+    answerA: "Yes",
+    answerB: "No",
+    answerC: "Sometimes", 
+    answerD: "None of the above", 
     correctAnswer: "answerA"},
-    {questionID: "20",
-    questionText: "How do you spell JavaScript?",
-    answerA: "Java",
-    answerB: "TypeScript",
-    answerC: "JavaScript", 
-    answerD: "JabbaScript", 
-    correctAnswer: "answerC"}
+    {questionID: "18",
+    questionText: "Which array method returns the length of the array?",
+    answerA: ".push()",
+    answerB: ".length",
+    answerC: ".round()", 
+    answerD: ".unshift()", 
+    correctAnswer: "answerB"},
+    {questionID: "19",
+    questionText: "Which best describes the follow: var thisArr = [{key1:value1},key2:value2];?",
+    answerA: "creating a function",
+    answerB: "an array of objects",
+    answerC: "an array is compared to objects", 
+    answerD: "a callback function", 
+    correctAnswer: "answerA"}
 ];
 // initiate a current question
 var currentQuestionObj = {};
@@ -184,7 +177,7 @@ let timerHandler = function() {
     var removeTextEl = document.querySelector(".question-text");
     removeTextEl.textContent = "";
     // set quizTime to 59 to eliminate time delay
-    quizTime = 2;
+    quizTime = 59;
     var timerOutput = setInterval(function() {
         // check if timer is negative
         if (quizTime <= 0) {
@@ -221,7 +214,7 @@ let gameHandler = function() {
     currentQuestionObj = questionObjectArr[randomNumber()];
     questionNumber++;
     // update the text of each element to reflect the new random question
-    questionTextEl.textContent = currentQuestionObj.questionText + " " + currentQuestionObj.questionID;
+    questionTextEl.textContent = currentQuestionObj.questionText;
     answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
     answerAEl.textContent = currentQuestionObj.answerA;
     answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
@@ -252,7 +245,7 @@ let generateQuestionCard = function(event) {
         currentQuestionObj = questionObjectArr[randomNumber()];
         questionNumber++;
         // update the text of each element to reflect the new random question
-        questionTextEl.textContent = currentQuestionObj.questionText + " " + currentQuestionObj.questionID;
+        questionTextEl.textContent = currentQuestionObj.questionText;
         answerAEl.setAttribute("data-question-id", currentQuestionObj.questionID);
         answerAEl.textContent = currentQuestionObj.answerA;
         answerBEl.setAttribute("data-question-id", currentQuestionObj.questionID);
@@ -285,16 +278,7 @@ let checkAnswer = function (event) {
         return false;
     }
 }
-// let initialsHandler = function() {
-//     // wait for input area 
-//     var initialsVal = document.querySelector(".initials-input").value;
-//     if (!initialsVal > 2) {
-//         scoreHandler();
-//     } else {
-//         localStorage.setItem("initials",JSON.stringify(initialsVal));
-//         console.log(initialsVal)
-//     }
-// }   
+
 
 let scoreHandler = function() {
     var questionTextEl = document.querySelector(".question-text")
@@ -326,15 +310,15 @@ let scoreHandler = function() {
         if (initials >= 2 || initials <= 0) {
             initials = window.prompt("enter your initials");
         } else {
-           localStorage.setItem("initials",JSON.stringify(initials));
-            console.log(initialsVal) 
+            localStorage.setItem("initials",JSON.stringify(initials));
+            console.log(initials);
         }
         
     } else {
         promptInitialEl.textContent = "Your score was not a High Score! Click OK to start over."
     }
 }
-
+// function that removes the information from the current question
 let clearQuestionCard = function() {
     // function that removes all text from question card elements 
     // only to be used at end of game
