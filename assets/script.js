@@ -15,11 +15,21 @@ let answerButtonElC = document.querySelector(".question-C");
 let answerButtonElD = document.querySelector(".question-D");
 // find the question outcome section
 let outcomeEl = document.querySelector(".outcome");
-// // current question number
-// let questionNumber = 0;
 // high score handling variables
+let initials = "";
 let score = 0;
-let highScore = [];
+let highScore = "";
+// store high score and initials in an array of objects
+let highScoreArray = [];
+// if there are already high scores stored
+if (localStorage.getItem("highScoreArray")) {
+    // retreive and store those high scores for this game
+    highScoreArray = JSON.parse(localStorage.getItem("highScoreArray"));
+    console.log(highScoreArray);
+    // initiate the highest score value
+    highScore = highScoreArray[0].score;
+}
+
 // question object array(format is {questionID, questionText, answer1, answer2, answer3, answer4, correntAnswer})
 let questionObjectArr = [
     {questionID: "0",
@@ -166,7 +176,7 @@ let questionObjectArr = [
 // initiate a current question
 var currentQuestionObj = {};
 let randomNumber = function() {
-    return Math.floor(Math.random() * questionObjectArr.length + 1);
+    return Math.floor(Math.random() * questionObjectArr.length);
 }
 // function to decrease time
 let decrementTimer = function(num) {
@@ -199,22 +209,8 @@ let timerHandler = function() {
 let gameHandler = function() {
     // first question at start of game
     // find a random question in the question array
+
     currentQuestionObj = questionObjectArr[randomNumber()];
-    // questionNumber++;
-    // var questionTextEl = document.querySelector(".question-text")
-    // var answerAEl = document.querySelector(".question-A");
-    // var answerBEl = document.querySelector(".question-B");
-    // var answerCEl = document.querySelector(".question-C");
-    // var answerDEl = document.querySelector(".question-D");
-    // reset the text in all elements each time we generate a new card
-    // answerButtonElA.textContent = "";
-    // answerButtonElB.textContent = "";
-    // answerButtonElC.textContent = "";
-    // answerButtonElD.textContent = "";
-    // find a random question in the question array
-    // currentQuestionObj = questionObjectArr[randomNumber()];
-    // console.log("gameHandler question: " + currentQuestionObj.questionText);
-    // // questionNumber++;
     // update the text of each element to reflect the new random question
     questionTextEl.textContent = currentQuestionObj.questionText;
     answerButtonElA.setAttribute("data-question-id", currentQuestionObj.questionID);
@@ -226,16 +222,8 @@ let gameHandler = function() {
     answerButtonElD.setAttribute("data-question-id", currentQuestionObj.questionID);
     answerButtonElD.textContent = currentQuestionObj.answerD;       
 }
-
 // function that dynamically updates the text for each question
 let generateQuestionCard = function(event) {
-       
-    // // initiate dom elements each time we generate a new card
-    // var questionTextEl = document.querySelector(".question-text")
-    // var answerAEl = document.querySelector(".question-A");
-    // var answerBEl = document.querySelector(".question-B");
-    // var answerCEl = document.querySelector(".question-C");
-    // var answerDEl = document.querySelector(".question-D");
     // if we clicked the correct answer
     if (checkAnswer(event)) {
         // reset the text in all elements each time we generate a new card
@@ -246,7 +234,6 @@ let generateQuestionCard = function(event) {
         // find a random question in the question array
         currentQuestionObj = questionObjectArr[randomNumber()];
         console.log("generateCard question: " + currentQuestionObj.questionText);
-        // questionNumber++;
         // update the text of each element to reflect the new random question
         questionTextEl.textContent = currentQuestionObj.questionText;
         answerButtonElA.setAttribute("data-question-id", currentQuestionObj.questionID);
@@ -266,7 +253,6 @@ let generateQuestionCard = function(event) {
         return;
     }   
 }
-
 // check if the answer was correct
 let checkAnswer = function (event) {
     let answerClicked = event.target;
@@ -281,7 +267,6 @@ let checkAnswer = function (event) {
         return false;
     }
 }
-
 let scoreHandler = function() {
     // find question text and answers
     // var questionTextEl = document.querySelector(".question-text")
@@ -296,31 +281,41 @@ let scoreHandler = function() {
     answerButtonElB.remove();
     answerButtonElC.remove(); 
     answerButtonElD.remove(); 
-    // var inputInitialsEl = document.createElement("textarea");
-    // inputInitialsEl.className = "initials-input"
-    // var promptInitialEl = document.createElement("p")
-    // promptInitialEl.textContent = "Enter Initials for High Score!"
-    if (score >= highScore) {
-        // save new high score to localStorage
-        highScore = score;
-        localStorage.setItem("highScore", JSON.stringify(highScore));
-        // ask for initials via text and input area
-        var initials = window.prompt("enter your initials")
-        // questionTextEl.appendChild(promptInitialEl);
-        // questionTextEl.appendChild(inputInitialsEl);
-        // questionTextEl.addEventListener("submit", initialsHandler);
-        if (initials >= 2 || initials <= 0) {
-            initials = window.prompt("enter your initials");
-        } else {
-            localStorage.setItem("initials",JSON.stringify(initials));
-            console.log(initials);
+    // if current score high enough to be on the list
+    if (highScoreArray.length < 10) {
+        initials = window.prompt("enter your initials")
+        initials.toUpperCase();
+        if (initials.length > 2 || initials.length <= 0) {
+            scoreHandler();
         }
+        newHighScore = {"initials": initials,"score":score};
+        highScoreArray.push(newHighScore);
+        highScoreArray.sort(function(b,a) {return a.score - b.score});
+        localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+        }
+    // if the score deserves to be in the top 10
+    if (highScoreArray.length === 10) {
         
-    } else {
-        promptInitialEl.textContent = "Your score was not a High Score! Click OK to start over."
-    }
-    // remove current question;
-    currentQuestionObj = {};
+        console.log(highScoreArray[highScoreArray.length - 1].score);
+        if (score > highScoreArray[highScoreArray.length - 1].score) {
+            initials = window.prompt("enter your initials")
+            initials.toUpperCase();
+            if (initials.length > 2 || initials.length <= 0) {
+                scoreHandler();
+            }        
+            // save new high score to localStorage
+            highScoreArray.pop();
+            newHighScore = {"initials": initials,"score":score};
+            highScoreArray.push(newHighScore);
+            highScoreArray.sort(function(b,a) {return a.score - b.score});
+            localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+        } else {
+            alert("Your score was not a Top 10 High Score! Click OK to view High Scores.");
+            // remove current question;
+            currentQuestionObj = {};
+            location.reload();
+        }                    
+    } 
 }
 // function that removes the information from the current question
 let clearQuestionCard = function() {
@@ -336,14 +331,13 @@ let clearQuestionCard = function() {
     answerButtonElC.textContent = ""; 
     answerButtonElD.textContent = ""; 
 }
-
 let endGame = function() {
     // clear question
     clearQuestionCard();
     // save info after game is over
     scoreHandler();
-
-
+    // move to high score page
+    location.assign("highScores.html")
 }
 
 // WHEN I click the start button
