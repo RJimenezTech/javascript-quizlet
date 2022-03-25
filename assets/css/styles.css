@@ -1,7 +1,7 @@
 * {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 header {
     background-color: #343a40;
@@ -58,7 +58,6 @@ header {
     border-radius: 5px;
     background-color: #D3D3D3;
     color: white;
-    width: 80%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -87,6 +86,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: underline;
 }
 .high-score-text {
     border-radius: 5px;
@@ -99,7 +99,7 @@ header {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    outline: 1px solid white;
+    /* outline: 1px solid white; */
 }
 .back {
     transition-duration: 0.1s;
