@@ -8,33 +8,22 @@ header {
     height: auto;
 }
 .view-scores {
+    transition-duration: 0.1s;
+    background-color: white;
+    color: black;
     margin: 10px;
-    /* border: 1px solid white; */
-    color: white;
     padding: 10px;
     max-width: 150px;
     min-width: 100px;
 }
-.view-scores:link {
-    text-decoration: none;
-}
-.view-scores:visited {
-    text-decoration: none;
-}
 .view-scores:hover {
-    text-decoration: none;
-}
-.view-scores:active {
-    text-decoration: underline;
+    background-color: #343a40;
+    color: white;
 }
 .timer {
-    margin: 10px;
-    /* border: 1px solid white; */
+
     font-size: 30px;
     color: white;
-    /* padding: 10px; */
-    /* min-width: 100px;
-    height: 100%; */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -65,14 +54,11 @@ header {
     flex-direction: column;
 }
 .question-card {
-    /* margin: 50px; */
     border: 1px solid white;
     border-radius: 5px;
-    /* padding: 10px; */
     background-color: #D3D3D3;
     color: white;
     width: 80%;
-    /* height: 80%; */
     position: relative;
     display: flex;
     justify-content: center;
@@ -97,8 +83,6 @@ header {
     font-size: 25px;
     color: white;
     padding: 25px;
-    /* position: absolute;
-    top: 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +127,6 @@ header {
 .back a:active {
     text-decoration: none;
 }
-
 .question-answer-container {
     position: absolute;
     bottom: 20%;
@@ -166,6 +149,13 @@ header {
     height: 35%;
     border-radius: 10px;
 }
+.question-A:hover, 
+.question-B:hover, 
+.question-C:hover, 
+.question-D:hover {
+    opacity: .75;
+} 
+
 .question-result {
     color: grey;
     opacity: .5;
@@ -175,7 +165,6 @@ header {
     position: absolute;
     bottom: 5%;
 }
-
 button a {
     width: auto;
     height: auto;
