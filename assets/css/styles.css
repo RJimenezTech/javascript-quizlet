@@ -5,47 +5,44 @@
 }
 header {
     background-color: purple;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 15vh;
+    height: auto;
 }
 .view-scores {
     margin: 10px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     color: white;
     padding: 10px;
     max-width: 150px;
     min-width: 100px;
 }
-.view-scores a:link {
+.view-scores:link {
     text-decoration: none;
 }
-.view-scores a:visited {
+.view-scores:visited {
     text-decoration: none;
 }
-.view-scores a:hover {
+.view-scores:hover {
     text-decoration: none;
+    color:
 }
-.view-scores a:active {
+.view-scores:active {
     text-decoration: underline;
 }
 .timer {
     margin: 10px;
-    border: 1px solid white;
-    font-size: 50px;
+    /* border: 1px solid white; */
+    font-size: 30px;
     color: white;
     /* padding: 10px; */
-    width: 300px;
-    min-width: 100px;
-    height: 100%;
+    /* min-width: 100px;
+    height: 100%; */
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .start {
-    transition-duration: 0.3s;
+    transition-duration: 0.1s;
     background-color: white;
     color: black;
     margin: 10px;
@@ -54,7 +51,7 @@ header {
     min-width: 100px;
 }
 .start:hover {
-    background-color: black;
+    background-color: purple;
     color: white;
 }
 .question-area {
@@ -69,14 +66,14 @@ header {
     flex-direction: column;
 }
 .question-card {
-    margin: 50px;
+    /* margin: 50px; */
     border: 1px solid white;
     border-radius: 5px;
-    padding: 10px;
-    background-color: grey;
+    /* padding: 10px; */
+    background-color: white;
     color: white;
     width: 80%;
-    height: 80%;
+    /* height: 80%; */
     position: relative;
     display: flex;
     justify-content: center;
@@ -126,7 +123,6 @@ header {
     position: absolute;
     bottom: 15px;
 }
-/*reorganize this section*/
 .question-answer-container {
     position: absolute;
     bottom: 20%;
@@ -137,7 +133,6 @@ header {
     gap: 5px;
     width: 85%;
     height: 50%;
-
 }
 .question-A, 
 .question-B, 
@@ -157,7 +152,6 @@ header {
 
 .outcome {
     position: absolute;
-    
     bottom: 5%;
 }
 footer {
