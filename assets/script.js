@@ -209,7 +209,6 @@ let timerHandler = function() {
 let gameHandler = function() {
     // first question at start of game
     // find a random question in the question array
-
     currentQuestionObj = questionObjectArr[randomNumber()];
     // update the text of each element to reflect the new random question
     questionTextEl.textContent = currentQuestionObj.questionText;
@@ -223,7 +222,11 @@ let gameHandler = function() {
     answerButtonElD.textContent = currentQuestionObj.answerD;       
 }
 // function that dynamically updates the text for each question
+// takes button click event as argument
 let generateQuestionCard = function(event) {
+    // find outcome display element
+    let outcomeDisplayEl = document.querySelector(".outcome");
+    outcomeDisplayEl.style.fontSize = "30px";
     // if we clicked the correct answer
     if (checkAnswer(event)) {
         // reset the text in all elements each time we generate a new card
@@ -233,7 +236,6 @@ let generateQuestionCard = function(event) {
         answerButtonElD.textContent = "";
         // find a random question in the question array
         currentQuestionObj = questionObjectArr[randomNumber()];
-        console.log("generateCard question: " + currentQuestionObj.questionText);
         // update the text of each element to reflect the new random question
         questionTextEl.textContent = currentQuestionObj.questionText;
         answerButtonElA.setAttribute("data-question-id", currentQuestionObj.questionID);
@@ -244,26 +246,27 @@ let generateQuestionCard = function(event) {
         answerButtonElC.textContent = currentQuestionObj.answerC;
         answerButtonElD.setAttribute("data-question-id", currentQuestionObj.questionID);
         answerButtonElD.textContent = currentQuestionObj.answerD;   
-        // update score as we get quesitons correct
+        // increase score for correct answer
         score++;
-        console.log(score) ;
+        // display score
+        outcomeDisplayEl.textContent = "Correct! Your score is: " + score;
     } else {
-        // decrease timer as we get questions wrong
+        // only reduced time by 4 because of the interval 1000ms delay
         decrementTimer(4);
+        // tell user timer was reduced and what score is
+        outcomeDisplayEl.textContent = "Wrong! Time (-) 5 sec. Your score is: " + score;
         return;
     }   
 }
 // check if the answer was correct
 let checkAnswer = function (event) {
     let answerClicked = event.target;
-    console.log(answerClicked.getAttribute("data-whichAnswer"));
-    console.log(currentQuestionObj.correctAnswer);
+    // console.log(answerClicked.getAttribute("data-whichAnswer"));
+    // console.log(currentQuestionObj.correctAnswer);
     if (answerClicked.getAttribute("data-whichAnswer") === currentQuestionObj.correctAnswer) {
-        console.log("correct!")
         return true;
     }
     else {
-        console.log("wrong!")
         return false;
     }
 }
@@ -281,39 +284,57 @@ let scoreHandler = function() {
     answerButtonElB.remove();
     answerButtonElC.remove(); 
     answerButtonElD.remove(); 
-    // if current score high enough to be on the list
+    // if high score list is less than 10, we just add the score to the list array
     if (highScoreArray.length < 10) {
-        initials = window.prompt("enter your initials")
+        // ask for initials
+        initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
+        // turn to upper case
         initials.toUpperCase();
+        // check that it was only two characters and not more or none
         if (initials.length > 2 || initials.length <= 0) {
-            scoreHandler();
+            scoreHandler(); // recursively ask for high score if initials failed
         }
+        // create a high score object for new high score
         newHighScore = {"initials": initials,"score":score};
+        // add new high score to my high score list array
         highScoreArray.push(newHighScore);
+        // sort array because now last item could have higher score
         highScoreArray.sort(function(b,a) {return a.score - b.score});
+        // add sorted array to local storage
         localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
         }
     // if the score deserves to be in the top 10
     if (highScoreArray.length === 10) {
         
         console.log(highScoreArray[highScoreArray.length - 1].score);
+        // check if the new score deserves to be in top 10 of a sorted list
         if (score > highScoreArray[highScoreArray.length - 1].score) {
-            initials = window.prompt("enter your initials")
+            // ask for initials
+            initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
+            // turn to upper case
             initials.toUpperCase();
+            // check that it was only two characters and not more or  none
             if (initials.length > 2 || initials.length <= 0) {
-                scoreHandler();
+                scoreHandler(); // recursively ask for high score if initials failed
             }        
             // save new high score to localStorage
+            // remove the last item because it is no longer top 10
             highScoreArray.pop();
+            // create a high score object for new high score
             newHighScore = {"initials": initials,"score":score};
+            // add new high score ot my high score list array
             highScoreArray.push(newHighScore);
+            // sorrt array because now last item could have high score
             highScoreArray.sort(function(b,a) {return a.score - b.score});
+            // add sorted array to local storage
             localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
         } else {
+            // if already 10 items in array, and new score does not make the cut
             alert("Your score was not a Top 10 High Score! Click OK to view High Scores.");
             // remove current question;
             currentQuestionObj = {};
-            location.reload();
+            // start over
+            location.assign("highScore.html");
         }                    
     } 
 }

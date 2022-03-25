@@ -1,9 +1,8 @@
 * {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
-
 header {
     background-color: purple;
     display: flex;
@@ -11,7 +10,6 @@ header {
     align-items: center;
     height: 15vh;
 }
-
 .view-scores {
     margin: 10px;
     border: 1px solid white;
@@ -20,23 +18,18 @@ header {
     max-width: 150px;
     min-width: 100px;
 }
-
 .view-scores a:link {
     text-decoration: none;
 }
-
 .view-scores a:visited {
     text-decoration: none;
 }
-
 .view-scores a:hover {
     text-decoration: none;
 }
-
 .view-scores a:active {
     text-decoration: underline;
 }
-
 .timer {
     margin: 10px;
     border: 1px solid white;
@@ -51,7 +44,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 .start {
     transition-duration: 0.3s;
     background-color: white;
@@ -65,7 +57,6 @@ header {
     background-color: black;
     color: white;
 }
-
 .question-area {
     background-color: grey;
     color: black;
@@ -79,7 +70,7 @@ header {
 }
 .question-card {
     margin: 50px;
-    border: 1px solid red;
+    border: 1px solid white;
     border-radius: 5px;
     padding: 10px;
     background-color: grey;
@@ -92,7 +83,7 @@ header {
     align-items: center;
 }
 .question-text {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: purple;
     font-size: 25px;
     color: white;
@@ -104,7 +95,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 .score-text {
     border-radius: 5px;
     background-color: purple;
@@ -118,7 +108,6 @@ header {
     align-items: center;
     flex-direction: column;
 }
-
 .high-score-text {
     border-radius: 5px;
     background-color: purple;
@@ -133,7 +122,6 @@ header {
     flex-direction: column;
     outline: 1px solid white;
 }
-
 .back {
     position: absolute;
     bottom: 15px;
@@ -151,26 +139,16 @@ header {
     height: 50%;
 
 }
-.question-A {
-    background-color: purple;
-}
-.question-B {
-    background-color:purple ;
-}
-.question-C {
-    background-color: purple;
-}
-.question-D {
-    background-color: purple;
-}
 .question-A, 
 .question-B, 
 .question-C, 
 .question-D {
     color: white;
+    background-color: purple;
     font-size: 20px;
     width: 45%;
     height: 35%;
+    border-radius: 10px;
 }
 .question-result {
     color: grey;
@@ -180,7 +158,7 @@ header {
 .outcome {
     position: absolute;
     
-    bottom: 0px;
+    bottom: 5%;
 }
 footer {
     background-color: purple;
