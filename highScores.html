@@ -9,31 +9,27 @@
         <link rel="stylesheet" href="./assets/css/styles.css" />
     </head>
     <body>
-        <header class="header container-fluid bg-dark">
-            <header class="container-fluid bg-dark">
-                <div class="row bg-dark p-3">
-                    <div class="col d-flex justify-content-center align-items-center">
-                    </div>
-                    <div class="col d-flex justify-content-center align-items-center">
-                    </div>
-                    <div class="timer col d-flex justify-content-center align-items-center" id="timer">
-                        Time : 60 s
-                    </div>  
+        <header class="container-fluid bg-dark">
+            <div class="row bg-dark p-3">
+                <div class="col d-flex justify-content-center align-items-center">
                 </div>
+                <div class="col d-flex justify-content-center align-items-center">
+                    <button class="back"><a class="w-100 h-100" href="index.html">Back to Quiz</a></button>
+                </div>
+                <div class="timer col d-flex justify-content-center align-items-center text-dark" id="timer">
+                    Time
+                </div>  
+            </div>
         </header>
-        <main id="page-content">
-            <section id="question-area" class="question-area">
-                <div class="question-card">
+        <main id="page-content" class="container-fluid">
+            <section id="question-area" class="question-area row bg-dark d-flex justify-content-start">
+                <div class="question-card col-8 p-5">
                     <h1 class="score-text">High Scores</h1>
-                    <button class="back"><a href="index.html">Back to game</a></button>
                 </div>
-                
-            </section>
-            
+    
+            </section>        
         </main>
-        <footer>
-            
-        </footer>
+
         <script src="./assets/highScoresScript.js"></script>
     </body>
 </html>
