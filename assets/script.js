@@ -199,8 +199,6 @@ let timerHandler = function() {
         } else {
             // otherwise update content in timerEl with the current quizTime
             timerEl.textContent = "Time : " + quizTime + " s";
-
-
             // call function to decrement quizTime
             decrementTimer(1);
         }
@@ -278,12 +276,12 @@ let scoreHandler = function() {
     answerButtonElC = document.querySelector(".question-C");
     answerButtonElD = document.querySelector(".question-D");
     // add info for user about end game process and remove answers
-    questionTextEl.textContent = "All done!";
-    questionTextEl.setAttribute("class","score-text");
-    answerButtonElA.remove();
-    answerButtonElB.remove();
-    answerButtonElC.remove(); 
-    answerButtonElD.remove(); 
+    // questionTextEl.textContent = "All done!";
+    // questionTextEl.setAttribute("class","score-text");
+    // answerButtonElA.remove();
+    // answerButtonElB.remove();
+    // answerButtonElC.remove(); 
+    // answerButtonElD.remove(); 
     // if high score list is less than 10, we just add the score to the list array
     if (highScoreArray.length < 10) {
         // ask for initials
@@ -293,20 +291,19 @@ let scoreHandler = function() {
         // check that it was only two characters and not more or none
         if (initials.length > 2 || initials.length <= 0) {
             scoreHandler(); // recursively ask for high score if initials failed
-        }
-        // create a high score object for new high score
-        newHighScore = {"initials": initials,"score":score};
-        // add new high score to my high score list array
-        highScoreArray.push(newHighScore);
-        // sort array because now last item could have higher score
-        highScoreArray.sort(function(b,a) {return a.score - b.score});
-        // add sorted array to local storage
-        localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
-        }
+        } else {
+            // create a high score object for new high score
+            newHighScore = {"initials": initials,"score":score};
+            // add new high score to my high score list array
+            highScoreArray.push(newHighScore);
+            // sort array because now last item could have higher score
+            highScoreArray.sort(function(b,a) {return a.score - b.score});
+            // add sorted array to local storage
+            localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+        }   
+    }
     // if the score deserves to be in the top 10
     if (highScoreArray.length === 10) {
-        
-        console.log(highScoreArray[highScoreArray.length - 1].score);
         // check if the new score deserves to be in top 10 of a sorted list
         if (score > highScoreArray[highScoreArray.length - 1].score) {
             // ask for initials
@@ -316,18 +313,19 @@ let scoreHandler = function() {
             // check that it was only two characters and not more or  none
             if (initials.length > 2 || initials.length <= 0) {
                 scoreHandler(); // recursively ask for high score if initials failed
-            }        
-            // save new high score to localStorage
-            // remove the last item because it is no longer top 10
-            highScoreArray.pop();
-            // create a high score object for new high score
-            newHighScore = {"initials": initials,"score":score};
-            // add new high score ot my high score list array
-            highScoreArray.push(newHighScore);
-            // sorrt array because now last item could have high score
-            highScoreArray.sort(function(b,a) {return a.score - b.score});
-            // add sorted array to local storage
-            localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+            } else {   
+                // save new high score to localStorage
+                // remove the last item because it is no longer top 10
+                highScoreArray.pop();
+                // create a high score object for new high score
+                newHighScore = {"initials": initials,"score":score};
+                // add new high score ot my high score list array
+                highScoreArray.push(newHighScore);
+                // sorrt array because now last item could have high score
+                highScoreArray.sort(function(b,a) {return a.score - b.score});
+                // add sorted array to local storage
+                localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray)); 
+            }
         } else {
             // if already 10 items in array, and new score does not make the cut
             alert("Your score was not a Top 10 High Score! Click OK to view High Scores.");
