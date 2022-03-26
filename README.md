@@ -4,10 +4,24 @@
 
 This project is an interactive quiz app for studying JavaScript concepts. To help a student become familiar with coding assessments and give them a chance to test their skills, this application invites you to try a quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript. 
 
-**Image of the project:**
----
+**Images of the project:**
+
+A New Game:
+
+![New Game](/assets/images/screengrab_unstarted_game.png)
+
+Middle of Game:
+
+![Middle of the Game](/assets/images/screengrab%20middle%20game.png)
+
+High Scores:
+
+![High Scores](/assets/images/screengrab%20high%20scores%20.png)
+
 **Link to deployed project:**
----
+To play the game in your browser, visit the link below: 
+https://rjimeneztech.github.io/javascript-quizlet/
+
 ## Table of Contents
 
 This README isn't very long, so I don't elaborate on this too much.
@@ -24,7 +38,7 @@ There are no installation steps for this project. It is a static website.
 
 ## Usage
 
----
+Feel free to test out the app. It will store up to 10 high scores and update the high score list dynamically as you beat your old high scores.
 
 ## Credits
 
