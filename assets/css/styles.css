@@ -70,8 +70,8 @@ header {
     color: white;
     position: absolute;
     top: 10px;
-    width: 85%;
-    height: 25%;
+    width: 90%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,9 +134,9 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 5px;
-    width: 85%;
-    height: 50%;
+    /* gap: 5px; */
+    width: 90%;
+    height: 55%;
 }
 .question-A, 
 .question-B, 
@@ -163,7 +163,7 @@ header {
 
 .outcome {
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
 }
 button a {
     width: auto;
