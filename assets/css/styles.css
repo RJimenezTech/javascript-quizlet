@@ -1,7 +1,7 @@
 * {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
 }
 header {
     background-color: #343a40;
@@ -22,7 +22,7 @@ header {
 }
 .timer {
 
-    font-size: 30px;
+    font-size: 25px;
     color: white;
     text-align: center;
     display: flex;
@@ -66,7 +66,7 @@ header {
 .question-text {
     border-radius: 10px;
     background-color: #343a40;
-    font-size: 25px;
+    font-size: .5em;
     color: white;
     position: absolute;
     top: 10px;
@@ -144,7 +144,7 @@ header {
 .question-D {
     color: white;
     background-color: #343a40;
-    font-size: 20px;
+    font-size: 15px;
     width: 45%;
     height: 35%;
     border-radius: 10px;
@@ -168,4 +168,51 @@ header {
 button a {
     width: auto;
     height: auto;
+}
+
+
+@media (min-width: 1200px){
+    .question-A, 
+    .question-B, 
+    .question-C, 
+    .question-D {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 1200px){
+    .question-A, 
+    .question-B, 
+    .question-C, 
+    .question-D {
+        font-size: 21px;
+    }
+}
+
+
+@media (max-width: 992px){
+    .question-A, 
+    .question-B, 
+    .question-C, 
+    .question-D {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 768px){
+    .question-A, 
+    .question-B, 
+    .question-C, 
+    .question-D {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 540px){
+    .question-A, 
+    .question-B, 
+    .question-C, 
+    .question-D {
+        font-size: 17px;
+    }
 }

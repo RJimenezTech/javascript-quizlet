@@ -11,26 +11,26 @@
     <body>
         <header class="container-fluid bg-dark">
             <div class="row bg-dark p-3">
-                <div class="col-2"></div>
-                <div class="col d-flex justify-content-center align-items-center">
+                <div class="col-md-2"></div>
+                <div class="col-6 col-md-2 d-flex justify-content-center align-items-center">
                     <button class="view-scores"  onclick="window.location.href = 'highScores.html';">
                         View High Scores
                     </button>
                 </div>
-                <div class="col d-flex justify-content-center align-items-center">
+                <div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
                     <button class="start" id="start">
                         Start Quiz
                     </button>  
                 </div>
-                <div class="timer col d-flex justify-content-center align-items-center" id="timer">
+                <div class="timer col-12 col-md-2 d-flex justify-content-center align-items-center" id="timer">
                     Time : 60 s
                 </div>  
-                <div class="col-2"></div>
+                <div class="col-md-2"></div>
             </div>
         </header>
         <main id="page-content" class="container-fluid">
             <section id="question-area" class="question-area row bg-dark d-flex justify-content-start">
-                <div class="question-card col-8 p-5">
+                <div class="question-card col-12 col-md-8 p-5">
                     <h1 class="question-text">Press START QUIZ to begin.</h1>
                     <div class="question-answer-container">
                     <button class="question-A" id="answer" data-whichAnswer="answerA"></button>
