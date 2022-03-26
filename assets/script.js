@@ -361,11 +361,7 @@ let scoreHandler = function() {
     // if high score list is less than 10, we just add the score to the list array
     if (highScoreArray.length < 10) {
         // ask for initials
-        initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
-        if (typeof initials != "string") {
-            alert("Please enter letters for initials.")
-            scoreHandler();
-        }
+        initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your 2 initials below:")
         // turn to upper case
         initials = initials.toUpperCase();
         // check that it was only two characters and not more or none
@@ -388,11 +384,7 @@ let scoreHandler = function() {
         // check if the new score deserves to be in top 10 of a sorted list
         if (score > highScoreArray[highScoreArray.length - 1].score) {
             // ask for initials
-            initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
-            if (typeof initials != "string") {
-                alert("Please enter letters for initials.")
-                scoreHandler();
-            }
+            initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your 2 initials below:")
             // turn to upper case
             initials = initials.toUpperCase();
             // check that it was only two characters and not more or  none
