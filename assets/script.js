@@ -25,7 +25,6 @@ let highScoreArray = [];
 if (localStorage.getItem("highScoreArray")) {
     // retreive and store those high scores for this game
     highScoreArray = JSON.parse(localStorage.getItem("highScoreArray"));
-    console.log(highScoreArray);
     // initiate the highest score value
     highScore = highScoreArray[0].score;
 }
@@ -138,7 +137,7 @@ let questionObjectArr = [
     answerD: "||", 
     correctAnswer: "answerD"},
     {questionID: "15",
-    questionText: "Which is the strict equality operatior?",
+    questionText: "Which is the strict equality operator?",
     answerA: "=",
     answerB: "==",
     answerC: "===", 
@@ -171,7 +170,84 @@ let questionObjectArr = [
     answerB: "an array of objects",
     answerC: "an array is compared to objects", 
     answerD: "a callback function", 
-    correctAnswer: "answerB"}
+    correctAnswer: "answerB"},
+    {questionID: "20",
+    questionText: "Which statement adds 1 to i?",
+    answerA: "i--;",
+    answerB: "i+-;",
+    answerC: "i++;", 
+    answerD: "i-+;", 
+    correctAnswer: "answerC"},
+    {questionID: "21",
+    questionText: "Which operator evaluates to the remainder of two number?",
+    answerA: "||",
+    answerB: "%",
+    answerC: "&", 
+    answerD: "$", 
+    correctAnswer: "answerB"},
+    {questionID: "22",
+    questionText: "Which is the NOT equal to value NOR type operator?",
+    answerA: "!==",
+    answerB: "!=",
+    answerC: "?", 
+    answerD: "===", 
+    correctAnswer: "answerA"},
+    {questionID: "23",
+    questionText: "Which is the logical NOT operator?",
+    answerA: "&&",
+    answerB: "||",
+    answerC: "!", 
+    answerD: "?", 
+    correctAnswer: "answerC"},
+    {questionID: "24",
+    questionText: "Which is NOT a JavaScript data type?",
+    answerA: "number",
+    answerB: "string",
+    answerC: "array", 
+    answerD: "typescript", 
+    correctAnswer: "answerD"},
+    {questionID: "25",
+    questionText: "Which is NOT a JavaScript primitive data type?",
+    answerA: "number",
+    answerB: "string",
+    answerC: "object", 
+    answerD: "boolean", 
+    correctAnswer: "answerC"},
+    {questionID: "26",
+    questionText: "What does X evaluate to? X = 25 % 17;",
+    answerA: "25",
+    answerB: "17",
+    answerC: "8", 
+    answerD: "1.47", 
+    correctAnswer: "answerC"},
+    {questionID: "27",
+    questionText: "What does X evaluate to? X = !true;",
+    answerA: "false",
+    answerB: "true",
+    answerC: "null", 
+    answerD: "Y", 
+    correctAnswer: "answerA"},
+    {questionID: "28",
+    questionText: "Which is NOT a comparison operator?",
+    answerA: "!=",
+    answerB: "=",
+    answerC: ">", 
+    answerD: "<", 
+    correctAnswer: "answerB"},
+    {questionID: "29",
+    questionText: "Which method returns a string representation of a number's value?",
+    answerA: ".toValue()",
+    answerB: ".toNumber()",
+    answerC: ".toString()", 
+    answerD: "None of the above.", 
+    correctAnswer: "answerC"},
+    {questionID: "30",
+    questionText: "Which method returns the first index of an element within an array equal to the value specified?",
+    answerA: ".indexOf()",
+    answerB: ".join()",
+    answerC: ".map()", 
+    answerD: ".lastIndexOf()", 
+    correctAnswer: "answerA"}
 ];
 // initiate a current question
 var currentQuestionObj = {};
@@ -286,10 +362,15 @@ let scoreHandler = function() {
     if (highScoreArray.length < 10) {
         // ask for initials
         initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
+        if (typeof initials != "string") {
+            alert("Please enter letters for initials.")
+            scoreHandler();
+        }
         // turn to upper case
-        initials.toUpperCase();
+        initials = initials.toUpperCase();
         // check that it was only two characters and not more or none
         if (initials.length > 2 || initials.length <= 0) {
+            alert("Please enter 2 letters as your initials");
             scoreHandler(); // recursively ask for high score if initials failed
         } else {
             // create a high score object for new high score
@@ -308,10 +389,15 @@ let scoreHandler = function() {
         if (score > highScoreArray[highScoreArray.length - 1].score) {
             // ask for initials
             initials = window.prompt("Your score was high enough to be in the Top 10 High Scores!. Enter your initials below:")
+            if (typeof initials != "string") {
+                alert("Please enter letters for initials.")
+                scoreHandler();
+            }
             // turn to upper case
-            initials.toUpperCase();
+            initials = initials.toUpperCase();
             // check that it was only two characters and not more or  none
             if (initials.length > 2 || initials.length <= 0) {
+                alert("Please enter 2 letters as your initials");
                 scoreHandler(); // recursively ask for high score if initials failed
             } else {   
                 // save new high score to localStorage
